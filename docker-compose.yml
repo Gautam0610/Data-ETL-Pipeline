@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  etl:
+    build: .
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - init-db
+  init-db:
+    image: busybox:latest
+    volumes:
+      - ./data:/app/data
+    command: "mkdir /app/data"
